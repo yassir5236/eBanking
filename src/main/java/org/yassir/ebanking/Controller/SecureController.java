@@ -10,20 +10,25 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api")
 public class SecureController {
     @GetMapping("/myAccount")
-    public String  getAccountInfo(Authentication authentication) {
+    public String  getAccountInfo() {
         return "Account details for user";
     }
 
     @GetMapping("/myLoans")
-    public String getLoans(Authentication authentication) {
+    public String getLoans() {
         return "myLoans";
     }
 
 
     @GetMapping("/myCards")
-    public String getMyCards(Authentication authentication) {
+    public String getMyCards() {
         return "My cards";
     }
 
+
+    @GetMapping("/myBalance")
+    public String myBalance() {
+        return "myBalance";
+    }
 
 }
