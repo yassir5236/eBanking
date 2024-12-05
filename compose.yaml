@@ -1,0 +1,19 @@
+services:
+  postgres:
+    image: 'postgres:latest'
+    environment:
+      POSTGRES_USER: 'yassir'
+      POSTGRES_DB: 'eBanking'
+      POSTGRES_PASSWORD: 'User_Password'
+    ports:
+      - "5433:5433"
+    command: ["postgres", "-p", "5433"]
+
+  pgadmin:
+    image: 'dpage/pgadmin4:latest'
+    environment:
+      PGADMIN_DEFAULT_EMAIL: 'yassir@gmail.com'
+      PGADMIN_DEFAULT_PASSWORD: 'admin'
+      PGADMIN_LISTEN_PORT: '5051'
+    ports:
+      - "5051:5051"

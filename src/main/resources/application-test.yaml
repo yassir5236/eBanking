@@ -1,0 +1,14 @@
+spring:
+  datasource:
+
+      url: jdbc:postgresql://localhost:5433/eBanking
+      username: yassir
+      password: User_Password
+      driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+  logging:
+    level:
+      root: DEBUG

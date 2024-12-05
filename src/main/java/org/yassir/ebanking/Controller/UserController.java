@@ -8,6 +8,8 @@ import org.yassir.ebanking.DTO.PasswordChangeRequest;
 import org.yassir.ebanking.Model.Entity.User;
 import org.yassir.ebanking.Service.UserService;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
@@ -29,6 +31,33 @@ public class UserController {
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
+    }
+
+
+    @GetMapping
+    public ResponseEntity<List<User>> getAllUsers() {
+        List<User> users = userService.getAllUsers();
+        return ResponseEntity.ok(users);
+    }
+
+    @GetMapping("/{username}")
+    public ResponseEntity<User> getUserByUsername(@PathVariable String username) {
+        User user = userService.getUserByUsername(username).orElse(null);
+        return ResponseEntity.ok(user);
+    }
+
+
+    @DeleteMapping("/{username}")
+    public ResponseEntity<?> deleteUser(@PathVariable String username) {
+        userService.deleteUser(username);
+        return ResponseEntity.ok("Utilisateur supprimé avec succès");
+    }
+
+    // 4. Endpoint pour mettre à jour le rôle d'un utilisateur (ADMIN)
+    @PutMapping("/{username}/updateRole")
+    public ResponseEntity<?> updateUserRole(@PathVariable String username, @RequestParam String newRole) {
+        userService.updateUserRole(username, newRole);
+        return ResponseEntity.ok("Rôle de l'utilisateur mis à jour avec succès");
     }
 }
 
