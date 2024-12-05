@@ -47,6 +47,7 @@ public class UserService {
     }
 
     public void updatePassword(String username, String oldPassword, String newPassword) {
+
         User user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new RuntimeException("Utilisateur introuvable !"));
 

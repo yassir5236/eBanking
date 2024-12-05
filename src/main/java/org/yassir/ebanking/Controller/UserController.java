@@ -23,15 +23,7 @@ public class UserController {
     }
 
 
-    @PutMapping("/{username}")
-    public ResponseEntity<?> updatePassword(@PathVariable String username, @RequestBody PasswordChangeRequest passwordChangeRequest) {
-        try {
-            userService.updatePassword(username, passwordChangeRequest.oldPassword(), passwordChangeRequest.newPassword());
-            return ResponseEntity.ok("Mot de passe mis à jour avec succès");
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
-        }
-    }
+
 
 
     @GetMapping
